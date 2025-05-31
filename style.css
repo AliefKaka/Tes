@@ -1,4 +1,4 @@
-/* Reset default browser style */
+/* Reset dan font dasar */
 * {
   margin: 0;
   padding: 0;
@@ -63,11 +63,12 @@ section h2 {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
 }
 
 form {
@@ -112,29 +113,20 @@ form button:hover {
   background: #0190a3;
 }
 
-.button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #00bcd4;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  margin-top: 20px;
-  transition: background 0.3s ease;
+.rules-box {
+  background: #1c2331;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
+  line-height: 1.8;
 }
 
-.button:hover {
-  background-color: #0190a3;
+.rules-box ol {
+  margin-left: 20px;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul li {
-  margin-bottom: 10px;
+.rules-box li {
+  margin-bottom: 15px;
 }
 
 footer {
@@ -142,8 +134,5 @@ footer {
   padding: 30px 20px;
   background: #1a1f2b;
   color: #888;
-  position: relative;
-  bottom: 0;
-  width: 100%;
   border-top: 3px solid #00bcd4;
 }
