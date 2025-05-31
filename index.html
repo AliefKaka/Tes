@@ -2,33 +2,40 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ABSOLUTE - Rekrutmen Anggota</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
-  <header>
+
+  <!-- Loader -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+    <p>Loading ABSOLUTE...</p>
+  </div>
+
+  <!-- Header -->
+  <header id="mainHeader">
     <h1>ABSOLUTE</h1>
     <nav>
-      <a href="#tentang" class="nav-link">Tentang Kami</a>
-      <a href="#divisi" class="nav-link">Divisi</a>
-      <a href="#rules" class="nav-link">Rules</a>
-      <a href="#daftar" class="nav-link">Daftar</a>
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#divisi">Divisi</a>
+      <a href="#rules">Rules</a>
+      <a href="#daftar">Daftar</a>
     </nav>
   </header>
 
-  <section id="tentang" class="section fade-in">
+  <!-- Tentang Kami -->
+  <section id="tentang" data-aos="fade-up">
     <h2>Tentang Kami</h2>
     <p>
-      ABSOLUTE adalah alliance komunitas game One Piece Bounty Rush (OPBR) yang
-      didirikan pada 9 September 2024 memiliki visi menjadi alliance terbaik dan
-      terkoordinasi di Indonesia. Kami mengutamakan kerja sama tim, kompetisi sehat,
-      dan semangat kekeluargaan. Saat ini kami membuka pendaftaran anggota baru
-      untuk bergabung dalam petualangan seru bersama kami.
+      ABSOLUTE adalah alliance komunitas game One Piece Bounty Rush (OPBR) yang didirikan pada 9 September 2024. Kami mengutamakan kerja sama tim, kompetisi sehat, dan semangat kekeluargaan. Bergabunglah dalam petualangan seru bersama kami!
     </p>
   </section>
 
-  <section id="divisi" class="section fade-in delay-1">
+  <!-- Divisi -->
+  <section id="divisi" data-aos="fade-up">
     <h2>Divisi Kami</h2>
     <div class="divisi-container">
       <div class="card">
@@ -54,38 +61,31 @@
     </div>
   </section>
 
-  <section id="rules" class="section fade-in delay-2">
-    <h2>KETENTUAN ALLIANCE ABSOLUTE</h2>
-    <p>Dengan bergabung Ally Absolute, Berarti anda setuju dengan ketentuan berikut:</p>
-    <ol class="rules-list">
-      <li><strong>ATTITUDE LEBIH DIUTAMAKAN. 🔝</strong><br />Jangan biasakan berbicara kotor.</li>
-      <li><strong>USAHAKAN BISA IKUT MABAR/SPAR SESAMA ALIANSI. ✅</strong><br />Dengan tujuan saling mengenal satu sama lain.</li>
-      <li><strong>CN (KALAU SUDAH BISA). ✅</strong><br />
-        - <em>Div 1</em> : ◃ꗶisiꗶ▹ (5 huruf).<br />
-        - <em>Div 2</em> : ◃ꗶisiꗶ▹² (4 huruf).<br />
-        - <em>Div 3</em> : ◃ꗶisiꗶ▹³ (4 huruf).<br />
-        - <em>Div 4</em> : ◃ꗶIsiꗶ▹⁴ (4 huruf).
-      </li>
-      <li><strong>NO CIT DALAM BENTUK LIGA / CB. ❌</strong><br />Tidak ada toleransi.</li>
-      <li><strong>WAJIB CHEERS. ✅</strong><br />Sesibuk apapun usahakan cheers 1× sehari</li>
-      <li><strong>JANGAN BAHAS POLITIK/DI LUAR PEMBAHASAN SEPUTAR ONE PIECE. ✅</strong></li>
-      <li><strong>NO TOXIC , SARA DAN HAL HAL BERBAU 18+. ✅</strong><br />Toleransi 5 kali selebihnya otomatis terkick oleh bot</li>
-      <li><strong>BATAS MAX GANTI AKUN 3X. ✅</strong><br />Boleh lebih tetapi bukan di ABSOLUTE</li>
-      <li><strong>UNTUK GANTI AKUN HUBUNGI LEDER/SUBLEDER DIVISI MASING". ✅</strong><br />Dimohon sangat agar mempermudah Lead/Sub Lead melakukan absen</li>
-      <li><strong>TIDAK BOLEH SPAM STIKER SAAT SEDANG BAHAS SESUATU. ✅</strong><br />Terutama ketika bahas hal penting agar tidak mengganggu</li>
-      <li><strong>DILARANG KERAS MEMBANTU CHEATER MAUPUN KERJA SAMA YANG MERUGIKAN PLAYER LAIN. ✅</strong><br />Bertujuan agar meningkatkan rasa solidaritas antar Ally Indo</li>
-      <li><strong>🚫DILARANG DOUBLE ALLY🚫</strong><br />Jika mempunyai akun second segara konsultasikan kepada lead/sub lead masing-masing.</li>
-      <li><strong>‼️WAKTU MENCARI AKUN 3 HARI</strong><br />Bagi yang ganti akun utama maksimal waktu 3 hari untuk mencari akun baru. BERLAKU SEMUA DIVISI</li>
-    </ol>
-    <p>
-      Dengan bergabung Alliance Absolute, Anda setuju dengan semua ketentuan yang berlaku dan di mohon untuk di patuhi.
-    </p>
+  <!-- Rules -->
+  <section id="rules" data-aos="fade-up">
+    <h2>Ketentuan Alliance</h2>
+    <ul>
+      <li>1. <strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
+      <li>2. <strong>USAHAKAN BISA IKUT MABAR/SPAR</strong> ✅</li>
+      <li>3. <strong>CN (KALAU SUDAH BISA)</strong> ✅</li>
+      <li>4. <strong>NO CHEAT</strong> ❌</li>
+      <li>5. <strong>WAJIB CHEERS</strong> ✅</li>
+      <li>6. <strong>TIDAK MEMBAHAS POLITIK</strong> ✅</li>
+      <li>7. <strong>NO TOXIC, SARA, 18+</strong> ✅</li>
+      <li>8. <strong>BATAS GANTI AKUN 3X</strong> ✅</li>
+      <li>9. <strong>IZIN GANTI AKUN KE LEADER</strong> ✅</li>
+      <li>10. <strong>NO SPAM STIKER SAAT SERIUS</strong> ✅</li>
+      <li>11. <strong>DILARANG MEMBANTU CHEATER</strong> ✅</li>
+      <li>12. <strong>DILARANG DOUBLE ALLY</strong> 🚫</li>
+      <li>13. <strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
+    </ul>
     <p><em>Ketentuan ini terakhir diperbarui pada 8 Mei 2025.</em></p>
   </section>
 
-  <section id="daftar" class="section fade-in delay-3">
+  <!-- Formulir Pendaftaran -->
+  <section id="daftar" data-aos="fade-up">
     <h2>Formulir Pendaftaran</h2>
-    <form action="/api/register" method="POST">
+    <form id="regForm">
       <label for="name">Nama Lengkap:</label>
       <input type="text" id="name" name="name" required />
 
@@ -97,6 +97,7 @@
 
       <label for="divisi">Pilih Divisi:</label>
       <select id="divisi" name="divisi" required>
+        <option value="">Pilih</option>
         <option value="Divisi 1">Divisi 1</option>
         <option value="Divisi 2">Divisi 2</option>
         <option value="Divisi 3">Divisi 3</option>
@@ -108,34 +109,43 @@
 
       <button type="submit">Daftar Sekarang</button>
     </form>
+    <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
   </section>
 
-  <footer>
+  <!-- Footer -->
+  <footer data-aos="fade-up">
     <p>&copy; 2024 ABSOLUTE Alliance. All rights reserved.</p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Scroll animation for fade-in sections
-    const faders = document.querySelectorAll('.fade-in');
+    AOS.init();
 
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-    };
+    // Hide loader
+    window.addEventListener("load", () => {
+      document.querySelector(".loader-wrapper").style.display = "none";
+    });
 
-    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          return;
-        } else {
-          entry.target.classList.add('appear');
-          appearOnScroll.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
+    // Form Interaksi
+    document.getElementById("regForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("regForm").style.display = "none";
+      document.getElementById("thanksMessage").style.display = "block";
+    });
 
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
+    // Header scroll hide/show
+    let lastScrollTop = 0;
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+      let st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) {
+        header.style.top = "-100px";
+      } else {
+        header.style.top = "0";
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
     });
   </script>
 </body>
