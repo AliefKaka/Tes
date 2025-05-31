@@ -1,4 +1,4 @@
-// File: /api/register.js (untuk Vercel serverless)
+// File: /api/register.js
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,19 +7,40 @@ export default async function handler(req, res) {
 
   const { name, email, whatsapp, divisi, reason } = req.body;
 
+  // Validasi input
   if (!name || !email || !whatsapp || !divisi || !reason) {
     return res.status(400).json({ message: 'Semua field harus diisi' });
   }
 
-  const timestamp = new Date().toISOString();
-  const entry = `============================\nTanggal: ${timestamp}\nNama: ${name}\nEmail: ${email}\nWhatsApp: ${whatsapp}\nDivisi: ${divisi}\nAlasan: ${reason}\n`;
+  const timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
 
-  // Simpan ke file (jika digunakan di lokal dengan fs)
-  // Tapi di Vercel, kita tidak bisa menulis file lokal secara permanen.
+  const content = `📥 **Pendaftaran Baru**
+🗓️ Tanggal: ${timestamp}
+👤 Nama: ${name}
+📧 Email: ${email}
+📱 WhatsApp: ${whatsapp}
+🧩 Divisi: ${divisi}
+📝 Alasan: ${reason}`;
 
-  console.log(entry); // Untuk testing, tampilkan di log Vercel
+  const webhookUrl = process.env.DISCORD_WEBHOOK;
 
-  // Kirim notifikasi ke WhatsApp (jika ada integrasi eksternal)
-  // Di sini kita hanya kembalikan sukses saja
-  return res.status(200).json({ message: 'Pendaftaran berhasil!' });
+  if (!webhookUrl) {
+    console.warn('DISCORD_WEBHOOK tidak disetel di environment');
+    return res.status(500).json({ message: 'Webhook tidak dikonfigurasi' });
+  }
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ content })
+    });
+
+    return res.status(200).json({ message: 'Pendaftaran berhasil!' });
+  } catch (error) {
+    console.error('Gagal mengirim ke Discord:', error);
+    return res.status(500).json({ message: 'Terjadi kesalahan saat mengirim data' });
+  }
 }
