@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABSOLUTE - Rekrutmen Anggota</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>ABSOLUTE</h1>
+        <nav>
+            <a href="#tentang">Tentang Kami</a>
+            <a href="#divisi">Divisi</a>
+            <a href="#daftar">Daftar</a>
+        </nav>
+    </header>
+
+    <section id="tentang">
+        <h2>Tentang Kami</h2>
+        <p>ABSOLUTE adalah organisasi komunitas game One Piece Bounty Rush (OPBR) yang memiliki visi menjadi guild terbaik dan terkoordinasi di Indonesia. Kami mengutamakan kerja sama tim, kompetisi sehat, dan semangat kekeluargaan. Saat ini kami membuka pendaftaran anggota baru untuk bergabung dalam petualangan seru bersama kami.</p>
+    </section>
+
+    <section id="divisi">
+        <h2>Divisi Kami</h2>
+        <div class="divisi-container">
+            <div class="card">
+                <h3>Divisi Red Force</h3>
+                <p>Dipimpin oleh: Zoro & Robin</p>
+                <p>Fokus pada strategi PvP dan pengembangan karakter ofensif.</p>
+            </div>
+            <div class="card">
+                <h3>Divisi Whitebeard</h3>
+                <p>Dipimpin oleh: Ace & Marco</p>
+                <p>Spesialisasi dalam pertahanan, support, dan permainan tim solid.</p>
+            </div>
+            <div class="card">
+                <h3>Divisi Revolution</h3>
+                <p>Dipimpin oleh: Dragon & Sabo</p>
+                <p>Mengutamakan taktik disruptif dan eksperimen build karakter.</p>
+            </div>
+            <div class="card">
+                <h3>Divisi Yonko</h3>
+                <p>Dipimpin oleh: Kaido & Big Mom</p>
+                <p>Divisi elit untuk pemain berpengalaman dan kompetitif.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="daftar">
+        <h2>Formulir Pendaftaran</h2>
+        <form action="register.php" method="POST">
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="whatsapp">Nomor WhatsApp:</label>
+            <input type="text" id="whatsapp" name="whatsapp" required>
+
+            <label for="divisi">Pilih Divisi:</label>
+            <select id="divisi" name="divisi" required>
+                <option value="Red Force">Red Force</option>
+                <option value="Whitebeard">Whitebeard</option>
+                <option value="Revolution">Revolution</option>
+                <option value="Yonko">Yonko</option>
+            </select>
+
+            <label for="reason">Mengapa Anda ingin bergabung?</label>
+            <textarea id="reason" name="reason" rows="4" required></textarea>
+
+            <button type="submit">Daftar Sekarang</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ABSOLUTE Guild. All rights reserved.</p>
+    </footer>
+</body>
+</html>
