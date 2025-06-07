@@ -10,20 +10,20 @@ export default async function handler(req, res) {
   }
 
   const timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
-  const content = `📥 **Pendaftaran Baru**\n` +
-                  `🗓️ **Tanggal:** ${timestamp}\n` +
-                  `👤 **Nama:** ${name}\n` +
-                  `📧 **Email:** ${email}\n` +
-                  `📱 **WhatsApp:** ${whatsapp}\n` +
-                  `🧩 **Divisi:** ${divisi}\n` +
-                  `📝 **Alasan:** ${reason}`;
 
-  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-  console.log("Webhook URL:", webhookUrl); // DEBUG
+  const content =
+    `📥 **Pendaftaran Baru**\n` +
+    `🗓️ **Tanggal:** ${timestamp}\n` +
+    `👤 **Nama:** ${name}\n` +
+    `📧 **Email:** ${email}\n` +
+    `📱 **WhatsApp:** ${whatsapp}\n` +
+    `🧩 **Divisi:** ${divisi}\n` +
+    `📝 **Alasan:** ${reason}`;
 
-  if (!webhookUrl) {
-    return res.status(500).json({ message: 'Webhook Discord belum dikonfigurasi di ENV' });
-  }
+  // Gunakan ENV dengan fallback
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL || "https://discord.com/api/webhooks/1347552599871717436/ankRLys5tIbDCbYyXIaqlaILXNnA2rLQdNnjs26N1I7fzbi11mMMuTjsdXJFmy7SvJVl";
+
+  console.log("Webhook URL digunakan:", webhookUrl); // Debug log (hapus di produksi)
 
   try {
     const discordResponse = await fetch(webhookUrl, {
@@ -36,14 +36,13 @@ export default async function handler(req, res) {
 
     if (!discordResponse.ok) {
       const errorText = await discordResponse.text();
-      console.error("Status Discord:", discordResponse.status);
-      console.error("Respon Discord:", errorText);
-      return res.status(500).json({ message: 'Gagal mengirim ke Discord' });
+      console.error("Gagal kirim ke Discord:", errorText);
+      return res.status(500).json({ message: 'Gagal mengirim data ke Discord' });
     }
 
     return res.status(200).json({ message: 'Pendaftaran berhasil!' });
-  } catch (err) {
-    console.error("Terjadi error:", err);
-    return res.status(500).json({ message: 'Terjadi kesalahan internal' });
+  } catch (error) {
+    console.error("Terjadi kesalahan saat kirim:", error);
+    return res.status(500).json({ message: 'Terjadi kesalahan saat mengirim data' });
   }
 }
