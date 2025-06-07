@@ -1,5 +1,3 @@
-// File: /api/register.js
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Metode tidak diizinkan' });
@@ -21,7 +19,12 @@ export default async function handler(req, res) {
                   `🧩 **Divisi:** ${divisi}\n` +
                   `📝 **Alasan:** ${reason}`;
 
-  const webhookUrl = "https://discord.com/api/webhooks/1347552599871717436/ankRLys5tIbDCbYyXIaqlaILXNnA2rLQdNnjs26N1I7fzbi11mMMuTjsdXJFmy7SvJVl";
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+
+  if (!webhookUrl) {
+    console.error("Environment variable DISCORD_WEBHOOK_URL belum diset.");
+    return res.status(500).json({ message: 'Webhook Discord belum dikonfigurasi' });
+  }
 
   try {
     const discordResponse = await fetch(webhookUrl, {
