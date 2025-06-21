@@ -1,3 +1,5 @@
+import { put } from '@vercel/blob';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Metode tidak diizinkan' });
@@ -20,29 +22,41 @@ export default async function handler(req, res) {
     `🧩 **Divisi:** ${divisi}\n` +
     `📝 **Alasan:** ${reason}`;
 
-  // Gunakan ENV dengan fallback
-  const webhookUrl = process.env.DISCORD_WEBHOOK_URL || "https://discord.com/api/webhooks/1347552599871717436/ankRLys5tIbDCbYyXIaqlaILXNnA2rLQdNnjs26N1I7fzbi11mMMuTjsdXJFmy7SvJVl";
-
-  console.log("Webhook URL digunakan:", webhookUrl); // Debug log (hapus di produksi)
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
   try {
-    const discordResponse = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ content })
-    });
-
-    if (!discordResponse.ok) {
-      const errorText = await discordResponse.text();
-      console.error("Gagal kirim ke Discord:", errorText);
-      return res.status(500).json({ message: 'Gagal mengirim data ke Discord' });
+    // Kirim ke Discord
+    if (webhookUrl) {
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content })
+      });
     }
 
-    return res.status(200).json({ message: 'Pendaftaran berhasil!' });
+    // Simpan ke Blob
+    const filename = `pendaftaran-${Date.now()}-${name.replace(/\s/g, "_").toLowerCase()}.json`;
+
+    const blobData = {
+      name,
+      email,
+      whatsapp,
+      divisi,
+      reason,
+      timestamp
+    };
+
+    const blob = await put(filename, JSON.stringify(blobData, null, 2), {
+      access: 'public',
+      token: process.env.BLOB_READ_WRITE_TOKEN, // Gunakan token otomatis dari Vercel
+    });
+
+    return res.status(200).json({
+      message: 'Pendaftaran berhasil!',
+      blobUrl: blob.url
+    });
   } catch (error) {
-    console.error("Terjadi kesalahan saat kirim:", error);
-    return res.status(500).json({ message: 'Terjadi kesalahan saat mengirim data' });
+    console.error("Kesalahan saat proses:", error);
+    return res.status(500).json({ message: 'Terjadi kesalahan saat memproses data' });
   }
 }
