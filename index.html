@@ -65,19 +65,19 @@
   <section id="rules" data-aos="fade-up">
     <h2>Ketentuan Alliance</h2>
     <ul>
-      <li>1. <strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
-      <li>2. <strong>USAHAKAN BISA IKUT MABAR/SPAR</strong> ✅</li>
-      <li>3. <strong>CN (KALAU SUDAH BISA)</strong> ✅</li>
-      <li>4. <strong>NO CHEAT</strong> ❌</li>
-      <li>5. <strong>WAJIB CHEERS</strong> ✅</li>
-      <li>6. <strong>TIDAK MEMBAHAS POLITIK</strong> ✅</li>
-      <li>7. <strong>NO TOXIC, SARA, 18+</strong> ✅</li>
-      <li>8. <strong>BATAS GANTI AKUN 3X</strong> ✅</li>
-      <li>9. <strong>IZIN GANTI AKUN KE LEADER</strong> ✅</li>
-      <li>10. <strong>NO SPAM STIKER SAAT SERIUS</strong> ✅</li>
-      <li>11. <strong>DILARANG MEMBANTU CHEATER</strong> ✅</li>
-      <li>12. <strong>DILARANG DOUBLE ALLY</strong> 🚫</li>
-      <li>13. <strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
+      <li><strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
+      <li><strong>USAHAKAN BISA IKUT MABAR/SPAR</strong> ✅</li>
+      <li><strong>CN (KALAU SUDAH BISA)</strong> ✅</li>
+      <li><strong>NO CHEAT</strong> ❌</li>
+      <li><strong>WAJIB CHEERS</strong> ✅</li>
+      <li><strong>TIDAK MEMBAHAS POLITIK</strong> ✅</li>
+      <li><strong>NO TOXIC, SARA, 18+</strong> ✅</li>
+      <li><strong>BATAS GANTI AKUN 3X</strong> ✅</li>
+      <li><strong>IZIN GANTI AKUN KE LEADER</strong> ✅</li>
+      <li><strong>NO SPAM STIKER SAAT SERIUS</strong> ✅</li>
+      <li><strong>DILARANG MEMBANTU CHEATER</strong> ✅</li>
+      <li><strong>DILARANG DOUBLE ALLY</strong> 🚫</li>
+      <li><strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
     </ul>
     <p><em>Ketentuan ini terakhir diperbarui pada 8 Mei 2025.</em></p>
   </section>
@@ -127,25 +127,48 @@
       document.querySelector(".loader-wrapper").style.display = "none";
     });
 
-    // Form Interaksi
-    document.getElementById("regForm").addEventListener("submit", function (e) {
+    // Handle form submit
+    document.getElementById("regForm").addEventListener("submit", async function (e) {
       e.preventDefault();
-      document.getElementById("regForm").style.display = "none";
-      document.getElementById("thanksMessage").style.display = "block";
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const whatsapp = document.getElementById("whatsapp").value;
+      const divisi = document.getElementById("divisi").value;
+      const reason = document.getElementById("reason").value;
+
+      try {
+        const res = await fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, whatsapp, divisi, reason }),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          document.getElementById("regForm").style.display = "none";
+          document.getElementById("thanksMessage").textContent = result.message;
+          document.getElementById("thanksMessage").style.display = "block";
+        } else {
+          alert("Gagal mendaftar: " + result.message);
+        }
+      } catch (error) {
+        console.error("Kesalahan:", error);
+        alert("Terjadi kesalahan saat mengirim data.");
+      }
     });
 
-    // Header scroll hide/show
+    // Header scroll
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
 
     window.addEventListener("scroll", () => {
       let st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop) {
-        header.style.top = "-100px";
-      } else {
-        header.style.top = "0";
-      }
-      lastScrollTop = st <= 0 ? 0 : st;
+      header.style.top = st > lastScrollTop ? "-100px" : "0";
+      lastScrollTop = Math.max(0, st);
     });
   </script>
 </body>
