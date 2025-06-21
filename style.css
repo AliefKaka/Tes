@@ -5,7 +5,9 @@
 
 body { background: linear-gradient(to bottom, #0c0f1a, #141927); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; line-height: 1.6; scroll-behavior: smooth; position: relative; }
 
-body::before { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: url("https://cdn.jsdelivr.net/gh/JulianLaval/canvas-particles/particles.gif") center center / cover no-repeat; opacity: 0.1; z-index: 0; pointer-events: none; }
+body::before { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: url("https://cdn.jsdelivr.net/gh/JulianLaval/canvas-particles/particles.gif") center center / cover no-repeat; opacity: 0.08; z-index: 0; pointer-events: none; animation: fadeBackground 8s infinite alternate; }
+
+@keyframes fadeBackground { from { opacity: 0.08; } to { opacity: 0.15; } }
 
 /* Loader */ .loader-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #0c0f1a; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; animation: fadeIn 1.2s ease-in-out; }
 
@@ -19,47 +21,59 @@ body::before { content: ""; position: fixed; top: 0; left: 0; width: 100vw; heig
 
 /* Header */ header { position: fixed; top: 0; width: 100%; background: rgba(26, 31, 43, 0.9); padding: 20px 40px; z-index: 1000; text-align: center; border-bottom: 3px solid #00bcd4; transition: top 0.4s ease-in-out, background 0.3s ease-in-out; backdrop-filter: blur(10px); }
 
-header h1 { font-size: 2.5rem; color: #00bcd4; margin-bottom: 10px; text-shadow: 0 0 10px #00bcd4; }
+header h1 { font-size: 2.5rem; color: #00bcd4; margin-bottom: 10px; text-shadow: 0 0 10px #00bcd4; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
 header nav a { margin: 0 15px; color: white; text-decoration: none; font-weight: bold; transition: color 0.3s ease, transform 0.2s; }
 
 header nav a:hover { color: #00bcd4; transform: scale(1.1); }
 
-/* Sections */ section { padding: 100px 20px 40px; max-width: 1000px; margin: 0 auto; animation: fadeInUp 1s ease; position: relative; z-index: 1; }
+/* Sections */ section { padding: 100px 20px 40px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; transition: all 0.5s ease-in-out; }
 
 section h2 { font-size: 2.3rem; margin-bottom: 20px; color: #00bcd4; text-align: center; position: relative; }
 
 section h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #00bcd4; border-radius: 3px; }
 
-/* Cards */ .divisi-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; animation: fadeInUp 1.2s ease; }
+/* Cards */ .divisi-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
 
 .card { background: linear-gradient(135deg, #1c2331, #2a3242); padding: 25px; border-radius: 15px; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 0 15px rgba(0, 188, 212, 0.2); border: 1px solid rgba(0, 188, 212, 0.2); }
 
 .card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 0 30px rgba(0, 188, 212, 0.5); }
 
-/* Rules */ #rules ul { list-style: none; padding-left: 0; animation: fadeInUp 1.2s ease; }
+/* Rules */ #rules ul { list-style: none; padding-left: 0; }
 
-#rules ul li { margin: 10px 0; padding-left: 15px; border-left: 3px solid #00bcd4; position: relative; padding-bottom: 5px; }
+#rules ul li { margin: 10px 0; padding-left: 15px; border-left: 3px solid #00bcd4; position: relative; padding-bottom: 5px; transition: transform 0.3s ease; }
+
+#rules ul li:hover { transform: translateX(5px); }
 
 #rules ul li::before { content: '✔'; position: absolute; left: -20px; color: #00bcd4; font-weight: bold; }
 
-/* Form */ form { background: #1c2331; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 188, 212, 0.3); transition: all 0.3s ease; animation: fadeInUp 1.2s ease; }
+/* Form */ form { background: #1c2331; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 188, 212, 0.3); transition: all 0.3s ease; }
 
 form label { display: block; margin-top: 15px; font-weight: bold; color: #00bcd4; }
 
-form input, form select, form textarea { width: 100%; padding: 12px; margin-top: 5px; border: none; border-radius: 5px; background: #2a2f40; color: white; font-size: 1rem; }
+form input, form select, form textarea { width: 100%; padding: 12px; margin-top: 5px; border: none; border-radius: 5px; background: #2a2f40; color: white; font-size: 1rem; transition: background 0.3s ease, box-shadow 0.3s ease; }
+
+form input:focus, form select:focus, form textarea:focus { outline: none; background: #31384a; box-shadow: 0 0 0 2px #00bcd4; }
 
 form button { margin-top: 25px; padding: 14px; width: 100%; background: #00bcd4; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; transition: background 0.4s ease, transform 0.2s ease; }
 
 form button:hover { background: #0190a3; transform: scale(1.02); }
 
-/* Footer */ footer { text-align: center; padding: 30px 20px; background: #1a1f2b; color: #888; border-top: 3px solid #00bcd4; animation: fadeInUp 1s ease; }
+/* Footer */ footer { text-align: center; padding: 30px 20px; background: #1a1f2b; color: #888; border-top: 3px solid #00bcd4; }
 
 /* Animations */ @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Fade-in show class */ .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+
+.fade-in.show { opacity: 1; transform: translateY(0); }
+
 /* Responsive */ @media (max-width: 600px) { header h1 { font-size: 1.8rem; }
 
-section h2 { font-size: 1.5rem; } }
+section h2 { font-size: 1.5rem; }
+
+.card { padding: 20px; }
+
+form { padding: 20px; } }
 
