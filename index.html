@@ -9,11 +9,13 @@
 </head>
 <body>
 
+  <!-- Loader -->
   <div class="loader-wrapper">
     <div class="loader"></div>
     <p>Loading ABSOLUTE...</p>
   </div>
 
+  <!-- Header -->
   <header id="mainHeader">
     <h1>ABSOLUTE</h1>
     <nav>
@@ -24,21 +26,25 @@
     </nav>
   </header>
 
+  <!-- Tentang Kami -->
   <section id="tentang" data-aos="fade-up">
     <h2>Tentang Kami</h2>
     <p>ABSOLUTE adalah alliance komunitas game One Piece Bounty Rush (OPBR)...</p>
   </section>
 
+  <!-- Divisi -->
   <section id="divisi" data-aos="fade-up">
     <h2>Divisi Kami</h2>
-    <!-- Kartu divisi tetap -->
+    <!-- ...konten divisi... -->
   </section>
 
+  <!-- Rules -->
   <section id="rules" data-aos="fade-up">
     <h2>Ketentuan Alliance</h2>
-    <!-- List rules tetap -->
+    <!-- ...daftar aturan... -->
   </section>
 
+  <!-- Formulir Pendaftaran -->
   <section id="daftar" data-aos="fade-up">
     <h2>Formulir Pendaftaran</h2>
     <form id="regForm">
@@ -53,7 +59,7 @@
 
       <label for="divisi">Pilih Divisi:</label>
       <select id="divisi" name="divisi" required>
-        <option value="" disabled selected>Pilih</option>
+        <option value="" disabled selected hidden>Pilih Divisi</option>
         <option value="Divisi 1">Divisi 1</option>
         <option value="Divisi 2">Divisi 2</option>
         <option value="Divisi 3">Divisi 3</option>
@@ -68,10 +74,12 @@
     <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
   </section>
 
+  <!-- Footer -->
   <footer data-aos="fade-up">
     <p>&copy; 2024 ABSOLUTE Alliance. All rights reserved.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -89,7 +97,7 @@
       const divisi = document.getElementById("divisi").value;
       const reason = document.getElementById("reason").value.trim();
 
-      console.log("Data akan dikirim:", { name, email, whatsapp, divisi, reason });
+      console.log("DEBUG:", { name, email, whatsapp, divisi, reason });
 
       if (!name || !email || !whatsapp || !divisi || !reason || divisi === "") {
         alert("Mohon lengkapi semua field sebelum mendaftar.");
@@ -120,6 +128,7 @@
 
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
+
     window.addEventListener("scroll", () => {
       let st = window.pageYOffset || document.documentElement.scrollTop;
       header.style.top = st > lastScrollTop ? "-100px" : "0";
