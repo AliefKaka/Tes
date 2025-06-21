@@ -5,11 +5,22 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Metode tidak diizinkan' });
   }
 
-  console.log('📩 Body diterima:', req.body);
+  let body;
 
-  const { name, email, whatsapp, divisi, reason } = req.body;
+  try {
+    body = req.body;
+    if (typeof body === 'string') {
+      body = JSON.parse(body);
+    }
+  } catch (err) {
+    console.error('❌ Body tidak valid:', err);
+    return res.status(400).json({ message: 'Format body tidak valid' });
+  }
 
-  if (!name || !email || !whatsapp || !divisi || !reason) {
+  const { name, email, whatsapp, divisi, reason } = body;
+
+  // Validasi field
+  if (!name?.trim() || !email?.trim() || !whatsapp?.trim() || !divisi?.trim() || !reason?.trim()) {
     return res.status(400).json({ message: 'Semua field harus diisi' });
   }
 
@@ -21,15 +32,16 @@ export default async function handler(req, res) {
   }
 
   const blobData = {
-    name,
-    email,
-    whatsapp,
-    divisi,
-    reason,
+    name: name.trim(),
+    email: email.trim(),
+    whatsapp: whatsapp.trim(),
+    divisi: divisi.trim(),
+    reason: reason.trim(),
     timestamp,
   };
 
-  const filename = `pendaftaran-${Date.now()}-${name.replace(/\s/g, "_").toLowerCase()}.json`;
+  const safeName = name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  const filename = `pendaftaran-${Date.now()}-${safeName}.json`;
 
   try {
     const blob = await put(filename, JSON.stringify(blobData, null, 2), {
