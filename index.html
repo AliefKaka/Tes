@@ -1,68 +1,52 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ABSOLUTE - Rekrutmen Anggota</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+    }
+    /* Tambahan animasi fade */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body>
-
-  <!-- Loader -->
-  <div class="loader-wrapper">
+<body>  <!-- Loader -->  <div class="loader-wrapper">
     <div class="loader"></div>
     <p>Loading ABSOLUTE...</p>
-  </div>
-
-  <!-- Header -->
-  <header id="mainHeader">
-    <h1>ABSOLUTE</h1>
+  </div>  <!-- Header -->  <header id="mainHeader">
+    <h1><i class="fas fa-dragon"></i> ABSOLUTE</h1>
     <nav>
       <a href="#tentang">Tentang Kami</a>
       <a href="#divisi-section">Divisi</a>
       <a href="#rules">Rules</a>
       <a href="#daftar">Daftar</a>
     </nav>
-  </header>
-
-  <!-- Tentang Kami -->
-  <section id="tentang" data-aos="fade-up">
+  </header>  <!-- Tentang Kami -->  <section id="tentang" class="fade-in">
     <h2>Tentang Kami</h2>
     <p>
       ABSOLUTE adalah alliance komunitas game One Piece Bounty Rush (OPBR) yang didirikan pada 9 September 2024. Kami mengutamakan kerja sama tim, kompetisi sehat, dan semangat kekeluargaan. Bergabunglah dalam petualangan seru bersama kami!
     </p>
-  </section>
-
-  <!-- Divisi -->
-  <section id="divisi-section" data-aos="fade-up">
+  </section>  <!-- Divisi -->  <section id="divisi-section" class="fade-in">
     <h2>Divisi Kami</h2>
     <div class="divisi-container">
-      <div class="card">
-        <h3>Divisi 1</h3>
-        <p>Dipimpin oleh: Ayahmu & Mamahmu</p>
-        <p>Fokus pada strategi PvP dan pengembangan karakter ofensif.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 2</h3>
-        <p>Dipimpin oleh: Dava & Alif</p>
-        <p>Spesialisasi dalam pertahanan, support, dan permainan tim solid.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 3</h3>
-        <p>Dipimpin oleh: Barkah & Budi</p>
-        <p>Mengutamakan taktik disruptif dan eksperimen build karakter.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 4</h3>
-        <p>Dipimpin oleh: Dancox & Kink Fuad</p>
-        <p>Divisi elit untuk pemain berpengalaman dan kompetitif.</p>
-      </div>
+      <div class="card"><h3>Divisi 1</h3><p>Dipimpin oleh: Ayahmu & Mamahmu</p><p>Fokus pada strategi PvP dan pengembangan karakter ofensif.</p></div>
+      <div class="card"><h3>Divisi 2</h3><p>Dipimpin oleh: Dava & Alif</p><p>Spesialisasi dalam pertahanan, support, dan permainan tim solid.</p></div>
+      <div class="card"><h3>Divisi 3</h3><p>Dipimpin oleh: Barkah & Budi</p><p>Mengutamakan taktik disruptif dan eksperimen build karakter.</p></div>
+      <div class="card"><h3>Divisi 4</h3><p>Dipimpin oleh: Dancox & Kink Fuad</p><p>Divisi elit untuk pemain berpengalaman dan kompetitif.</p></div>
     </div>
-  </section>
-
-  <!-- Rules -->
-  <section id="rules" data-aos="fade-up">
+  </section>  <!-- Rules -->  <section id="rules" class="fade-in">
     <h2>Ketentuan Alliance</h2>
     <ul>
       <li><strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
@@ -80,50 +64,40 @@
       <li><strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
     </ul>
     <p><em>Ketentuan ini terakhir diperbarui pada 8 Mei 2025.</em></p>
-  </section>
-
-  <!-- Formulir Pendaftaran -->
-  <section id="daftar" data-aos="fade-up">
+  </section>  <!-- Formulir Pendaftaran -->  <section id="daftar" class="fade-in">
     <h2>Formulir Pendaftaran</h2>
     <form id="regForm">
       <label for="name">Nama Lengkap:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required /><label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+  <label for="whatsapp">Nomor WhatsApp:</label>
+  <input type="text" id="whatsapp" name="whatsapp" required />
 
-      <label for="whatsapp">Nomor WhatsApp:</label>
-      <input type="text" id="whatsapp" name="whatsapp" required />
+  <label for="divisi-select">Pilih Divisi:</label>
+  <select id="divisi-select" name="divisi" required>
+    <option value="" disabled selected hidden>Pilih Divisi</option>
+    <option value="Divisi 1">Divisi 1</option>
+    <option value="Divisi 2">Divisi 2</option>
+    <option value="Divisi 3">Divisi 3</option>
+    <option value="Divisi 4">Divisi 4</option>
+  </select>
 
-      <label for="divisi-select">Pilih Divisi:</label>
-      <select id="divisi-select" name="divisi" required>
-        <option value="" disabled selected hidden>Pilih Divisi</option>
-        <option value="Divisi 1">Divisi 1</option>
-        <option value="Divisi 2">Divisi 2</option>
-        <option value="Divisi 3">Divisi 3</option>
-        <option value="Divisi 4">Divisi 4</option>
-      </select>
+  <label for="reason">Mengapa Anda ingin bergabung?</label>
+  <textarea id="reason" name="reason" rows="4" required></textarea>
 
-      <label for="reason">Mengapa Anda ingin bergabung?</label>
-      <textarea id="reason" name="reason" rows="4" required></textarea>
+  <button type="submit">Daftar Sekarang</button>
+</form>
+<p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
 
-      <button type="submit">Daftar Sekarang</button>
-    </form>
-    <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
-  </section>
-
-  <!-- Footer -->
-  <footer data-aos="fade-up">
+  </section>  <!-- Footer -->  <footer class="fade-in">
     <p>&copy; 2024 ABSOLUTE Alliance. All rights reserved.</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
+  </footer>  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
     AOS.init();
 
     window.addEventListener("load", () => {
       document.querySelector(".loader-wrapper").style.display = "none";
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('show'));
     });
 
     document.getElementById("regForm").addEventListener("submit", async function (e) {
@@ -151,7 +125,7 @@
 
         if (res.ok) {
           document.getElementById("regForm").style.display = "none";
-          document.getElementById("thanksMessage").textContent = result.message;
+          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar!';
           document.getElementById("thanksMessage").style.display = "block";
         } else {
           alert("Gagal mendaftar: " + result.message);
@@ -170,6 +144,5 @@
       header.style.top = st > lastScrollTop ? "-100px" : "0";
       lastScrollTop = Math.max(0, st);
     });
-  </script>
-</body>
+  </script></body>
 </html>
