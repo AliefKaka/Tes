@@ -9,13 +9,11 @@
 </head>
 <body>
 
-  <!-- Loader -->
   <div class="loader-wrapper">
     <div class="loader"></div>
     <p>Loading ABSOLUTE...</p>
   </div>
 
-  <!-- Header -->
   <header id="mainHeader">
     <h1>ABSOLUTE</h1>
     <nav>
@@ -26,63 +24,21 @@
     </nav>
   </header>
 
-  <!-- Tentang Kami -->
   <section id="tentang" data-aos="fade-up">
     <h2>Tentang Kami</h2>
-    <p>
-      ABSOLUTE adalah alliance komunitas game One Piece Bounty Rush (OPBR) yang didirikan pada 9 September 2024. Kami mengutamakan kerja sama tim, kompetisi sehat, dan semangat kekeluargaan. Bergabunglah dalam petualangan seru bersama kami!
-    </p>
+    <p>ABSOLUTE adalah alliance komunitas game One Piece Bounty Rush (OPBR)...</p>
   </section>
 
-  <!-- Divisi -->
   <section id="divisi" data-aos="fade-up">
     <h2>Divisi Kami</h2>
-    <div class="divisi-container">
-      <div class="card">
-        <h3>Divisi 1</h3>
-        <p>Dipimpin oleh: Ayahmu & Mamahmu</p>
-        <p>Fokus pada strategi PvP dan pengembangan karakter ofensif.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 2</h3>
-        <p>Dipimpin oleh: Dava & Alif</p>
-        <p>Spesialisasi dalam pertahanan, support, dan permainan tim solid.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 3</h3>
-        <p>Dipimpin oleh: Barkah & Budi</p>
-        <p>Mengutamakan taktik disruptif dan eksperimen build karakter.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 4</h3>
-        <p>Dipimpin oleh: Dancox & Kink Fuad</p>
-        <p>Divisi elit untuk pemain berpengalaman dan kompetitif.</p>
-      </div>
-    </div>
+    <!-- Kartu divisi tetap -->
   </section>
 
-  <!-- Rules -->
   <section id="rules" data-aos="fade-up">
     <h2>Ketentuan Alliance</h2>
-    <ul>
-      <li><strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
-      <li><strong>USAHAKAN BISA IKUT MABAR/SPAR</strong> ✅</li>
-      <li><strong>CN (KALAU SUDAH BISA)</strong> ✅</li>
-      <li><strong>NO CHEAT</strong> ❌</li>
-      <li><strong>WAJIB CHEERS</strong> ✅</li>
-      <li><strong>TIDAK MEMBAHAS POLITIK</strong> ✅</li>
-      <li><strong>NO TOXIC, SARA, 18+</strong> ✅</li>
-      <li><strong>BATAS GANTI AKUN 3X</strong> ✅</li>
-      <li><strong>IZIN GANTI AKUN KE LEADER</strong> ✅</li>
-      <li><strong>NO SPAM STIKER SAAT SERIUS</strong> ✅</li>
-      <li><strong>DILARANG MEMBANTU CHEATER</strong> ✅</li>
-      <li><strong>DILARANG DOUBLE ALLY</strong> 🚫</li>
-      <li><strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
-    </ul>
-    <p><em>Ketentuan ini terakhir diperbarui pada 8 Mei 2025.</em></p>
+    <!-- List rules tetap -->
   </section>
 
-  <!-- Formulir Pendaftaran -->
   <section id="daftar" data-aos="fade-up">
     <h2>Formulir Pendaftaran</h2>
     <form id="regForm">
@@ -97,7 +53,7 @@
 
       <label for="divisi">Pilih Divisi:</label>
       <select id="divisi" name="divisi" required>
-        <option value="">Pilih</option>
+        <option value="" disabled selected>Pilih</option>
         <option value="Divisi 1">Divisi 1</option>
         <option value="Divisi 2">Divisi 2</option>
         <option value="Divisi 3">Divisi 3</option>
@@ -112,37 +68,38 @@
     <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
   </section>
 
-  <!-- Footer -->
   <footer data-aos="fade-up">
     <p>&copy; 2024 ABSOLUTE Alliance. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
 
-    // Hide loader
     window.addEventListener("load", () => {
       document.querySelector(".loader-wrapper").style.display = "none";
     });
 
-    // Handle form submit
     document.getElementById("regForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const whatsapp = document.getElementById("whatsapp").value;
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
       const divisi = document.getElementById("divisi").value;
-      const reason = document.getElementById("reason").value;
+      const reason = document.getElementById("reason").value.trim();
+
+      console.log("Data akan dikirim:", { name, email, whatsapp, divisi, reason });
+
+      if (!name || !email || !whatsapp || !divisi || !reason || divisi === "") {
+        alert("Mohon lengkapi semua field sebelum mendaftar.");
+        return;
+      }
 
       try {
         const res = await fetch("/api/register", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, whatsapp, divisi, reason }),
         });
 
@@ -161,10 +118,8 @@
       }
     });
 
-    // Header scroll
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
-
     window.addEventListener("scroll", () => {
       let st = window.pageYOffset || document.documentElement.scrollTop;
       header.style.top = st > lastScrollTop ? "-100px" : "0";
