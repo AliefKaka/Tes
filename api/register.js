@@ -5,24 +5,19 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Metode tidak diizinkan' });
   }
 
+  console.log('📩 Body diterima:', req.body);
+
   const { name, email, whatsapp, divisi, reason } = req.body;
 
   if (!name || !email || !whatsapp || !divisi || !reason) {
     return res.status(400).json({ message: 'Semua field harus diisi' });
   }
 
-  const timestamp = new Date().toLocaleString('id-ID', {
-    timeZone: 'Asia/Jakarta',
-  });
+  const timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
 
   const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
-
-  // Debugging token
   if (!blobToken) {
-    console.error('❌ Token untuk Vercel Blob tidak tersedia.');
-    return res.status(500).json({
-      message: 'Token untuk penyimpanan tidak tersedia. Pastikan BLOB_READ_WRITE_TOKEN dikonfigurasi di Vercel.',
-    });
+    return res.status(500).json({ message: 'Token penyimpanan tidak tersedia.' });
   }
 
   const blobData = {
@@ -42,7 +37,7 @@ export default async function handler(req, res) {
       token: blobToken,
     });
 
-    console.log('✅ File berhasil disimpan di Blob:', blob.url);
+    console.log('✅ Data berhasil disimpan di Blob:', blob.url);
 
     return res.status(200).json({
       message: 'Pendaftaran berhasil!',
@@ -51,7 +46,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('❌ Gagal menyimpan ke Blob:', error);
     return res.status(500).json({
-      message: 'Gagal menyimpan data ke database',
+      message: 'Gagal menyimpan data',
       error: error.message,
     });
   }
