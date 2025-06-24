@@ -78,7 +78,7 @@ body::before {
 
 /* Header */
 header {
-  position: fixed;
+  position: relative;
   top: 0;
   width: 100%;
   background: rgba(26, 31, 43, 0.9);
