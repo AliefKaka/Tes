@@ -19,7 +19,6 @@ export default async function handler(req, res) {
 
   const { name, email, whatsapp, divisi, reason } = body;
 
-  // Validasi field
   if (!name?.trim() || !email?.trim() || !whatsapp?.trim() || !divisi?.trim() || !reason?.trim()) {
     return res.status(400).json({ message: 'Semua field harus diisi' });
   }
@@ -27,6 +26,8 @@ export default async function handler(req, res) {
   const timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
 
   const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+
   if (!blobToken) {
     return res.status(500).json({ message: 'Token penyimpanan tidak tersedia.' });
   }
@@ -50,6 +51,44 @@ export default async function handler(req, res) {
     });
 
     console.log('✅ Data berhasil disimpan di Blob:', blob.url);
+
+    // Kirim notifikasi Discord dengan Embed
+    if (webhookUrl) {
+      const discordEmbed = {
+        username: 'Notifier Pendaftaran',
+        avatar_url: 'https://cdn-icons-png.flaticon.com/512/686/686589.png',
+        embeds: [
+          {
+            title: '📥 Pendaftaran Baru',
+            color: 0x00b0f4,
+            fields: [
+              { name: '👤 Nama', value: name, inline: true },
+              { name: '📧 Email', value: email, inline: true },
+              { name: '📱 WhatsApp', value: whatsapp, inline: true },
+              { name: '🏢 Divisi', value: divisi, inline: true },
+              { name: '📝 Alasan', value: reason },
+              { name: '🕒 Waktu', value: timestamp, inline: false },
+              { name: '📁 File', value: `[Lihat Data](${blob.url})`, inline: false },
+            ],
+            footer: {
+              text: 'Bot Pendaftaran Otomatis',
+            },
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      };
+
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(discordEmbed),
+        });
+        console.log('✅ Embed Discord terkirim');
+      } catch (err) {
+        console.error('❌ Gagal kirim embed Discord:', err);
+      }
+    }
 
     return res.status(200).json({
       message: 'Pendaftaran berhasil!',
