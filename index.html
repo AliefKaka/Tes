@@ -163,11 +163,11 @@
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const whatsapp = document.getElementById("whatsapp").value.trim();
-      const level = document.getElementById("level").value.trim();
       const divisi = document.getElementById("divisi-select").value;
+      const level = document.getElementById("level").value.trim();
       const reason = document.getElementById("reason").value.trim();
 
-      if (!name || !email || !whatsapp || !level || !divisi || !reason) {
+      if (!name || !email || !whatsapp || !divisi || !level || !reason) {
         alert("Mohon lengkapi semua field sebelum mendaftar.");
         return;
       }
@@ -176,7 +176,7 @@
         const res = await fetch("/api/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, whatsapp, level, divisi, reason }),
+          body: JSON.stringify({ name, email, whatsapp, divisi, level, reason }),
         });
 
         const result = await res.json();
