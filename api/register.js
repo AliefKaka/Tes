@@ -17,9 +17,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Format body tidak valid' });
   }
 
-  const { name, email, whatsapp, level, divisi, reason } = body;
+  const { name, email, whatsapp, divisi, level, reason } = body;
 
-  if (!name?.trim() || !email?.trim() || !whatsapp?.trim() || !level?.trim() || !divisi?.trim() || !reason?.trim()) {
+  if (!name?.trim() || !email?.trim() || !whatsapp?.trim() || !divisi?.trim() || !level?.trim() || !reason?.trim()) {
     return res.status(400).json({ message: 'Semua field harus diisi' });
   }
 
@@ -36,8 +36,8 @@ export default async function handler(req, res) {
     name: name.trim(),
     email: email.trim(),
     whatsapp: whatsapp.trim(),
-    level: level.trim(),
     divisi: divisi.trim(),
+    level: level.trim(),
     reason: reason.trim(),
     timestamp,
   };
@@ -66,8 +66,8 @@ export default async function handler(req, res) {
               { name: '👤 Nama', value: name, inline: true },
               { name: '📧 Email', value: email, inline: true },
               { name: '📱 WhatsApp', value: whatsapp, inline: true },
-              { name: '📱 Level Akun', value: level, inline: true },
               { name: '🏢 Divisi', value: divisi, inline: true },
+              { name: '📱 Level Akun', value: level, inline: true },
               { name: '📝 Alasan', value: reason },
               { name: '🕒 Waktu', value: timestamp, inline: false },
               { name: '📁 File', value: `[Lihat Data](${blob.url})`, inline: false },
