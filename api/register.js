@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     name: name.trim(),
     email: email.trim(),
     whatsapp: whatsapp.trim(),
-    level: whatsapp.trim(),
+    level: level.trim(),
     divisi: divisi.trim(),
     reason: reason.trim(),
     timestamp,
