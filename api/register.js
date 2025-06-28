@@ -91,7 +91,10 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({
-      message: 'Pendaftaran berhasil!\n\nNote: Kami akan segera menghubungi dalam 10-20 menit.',
+      message: [
+    'Pendaftaran berhasil!',
+    'Note: Kami akan segera menghubungi dalam 10-20 menit.'
+  ],
       blobUrl: blob.url,
     });
   } catch (error) {
