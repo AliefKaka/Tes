@@ -180,7 +180,7 @@
         const res = await fetch("/api/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, whatsapp, divisi, level, reason }),
+          body: JSON.stringify({ name, whatsapp, divisi, level, reason }),
         });
 
         const result = await res.json();
