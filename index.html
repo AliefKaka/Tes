@@ -22,23 +22,37 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
   <style>
-    html,
-    body {
+    html, body {
       scroll-behavior: smooth;
     }
-
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease-out;
     }
-
     .fade-in.show {
       opacity: 1;
       transform: translateY(0);
     }
   </style>
+
+  <!-- ✅ Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () {
+      (window.va.q = window.va.q || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- ✅ Vercel Speed Insights -->
+  <script>
+    window.si = window.si || function () {
+      (window.siq = window.siq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 
 <body>
@@ -149,42 +163,34 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-
     window.addEventListener("load", () => {
       document.querySelector(".loader-wrapper").style.display = "none";
       document.querySelectorAll('.fade-in').forEach(el => el.classList.add('show'));
     });
-
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('header nav');
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
       hamburger.classList.toggle('open');
     });
-
     document.getElementById("regForm").addEventListener("submit", async function (e) {
       e.preventDefault();
-
       const name = document.getElementById("name").value.trim();
       const whatsapp = document.getElementById("whatsapp").value.trim();
       const divisi = document.getElementById("divisi-select").value;
       const level = document.getElementById("level").value.trim();
       const reason = document.getElementById("reason").value.trim();
-
       if (!name || !whatsapp || !divisi || !level || !reason) {
         alert("Mohon lengkapi semua field sebelum mendaftar.");
         return;
       }
-
       try {
         const res = await fetch("/api/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, whatsapp, divisi, level, reason }),
         });
-
         const result = await res.json();
-
         if (res.ok) {
           document.getElementById("regForm").style.display = "none";
           document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar!';
@@ -197,7 +203,6 @@
         alert("Terjadi kesalahan saat mengirim data.");
       }
     });
-
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
     window.addEventListener("scroll", () => {
