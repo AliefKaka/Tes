@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://aliefkaka.biz.id" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Card (optional) -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ABSOLUTE – OPBR Alliance" />
   <meta name="twitter:description" content="Join sini b4bi ally OPBR GG!" />
@@ -167,12 +167,14 @@
       document.querySelector(".loader-wrapper").style.display = "none";
       document.querySelectorAll('.fade-in').forEach(el => el.classList.add('show'));
     });
+
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('header nav');
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
       hamburger.classList.toggle('open');
     });
+
     document.getElementById("regForm").addEventListener("submit", async function (e) {
       e.preventDefault();
       const name = document.getElementById("name").value.trim();
@@ -193,8 +195,11 @@
         const result = await res.json();
         if (res.ok) {
           document.getElementById("regForm").style.display = "none";
-          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar!';
+          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar! Anda akan segera dialihkan ke grup WhatsApp...';
           document.getElementById("thanksMessage").style.display = "block";
+          setTimeout(() => {
+            window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
+          }, 2000);
         } else {
           alert("Gagal mendaftar: " + result.message);
         }
@@ -203,6 +208,7 @@
         alert("Terjadi kesalahan saat mengirim data.");
       }
     });
+
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
     window.addEventListener("scroll", () => {
