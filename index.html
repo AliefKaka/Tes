@@ -154,15 +154,6 @@
     <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
   </section>
 
-  <!-- Pop-up Konfirmasi -->
-  <div id="popupConfirm" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:9999; display:flex; align-items:center; justify-content:center;">
-    <div style="background:#fff; padding:25px; border-radius:10px; text-align:center; max-width:90%;">
-      <h3>Ingin Bergabung ke Grup WhatsApp?</h3>
-      <p>Klik tombol di bawah untuk langsung masuk ke grup resmi ABSOLUTE OPBR.</p>
-      <button onclick="redirectToWhatsApp()" style="margin-top:15px; padding:10px 25px; font-weight:bold; background-color:#25D366; color:white; border:none; border-radius:5px;">Ya, lanjut!</button>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer class="fade-in">
     <p>&copy; 2025 ABSOLUTE OPBR. All rights reserved.</p>
@@ -204,9 +195,11 @@
         const result = await res.json();
         if (res.ok) {
           document.getElementById("regForm").style.display = "none";
-          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar!';
+          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar! Anda akan segera dialihkan ke grup WhatsApp...';
           document.getElementById("thanksMessage").style.display = "block";
-          document.getElementById("popupConfirm").style.display = "flex";
+          setTimeout(() => {
+            window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
+          }, 2000);
         } else {
           alert("Gagal mendaftar: " + result.message);
         }
@@ -215,10 +208,6 @@
         alert("Terjadi kesalahan saat mengirim data.");
       }
     });
-
-    function redirectToWhatsApp() {
-      window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
-    }
 
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
