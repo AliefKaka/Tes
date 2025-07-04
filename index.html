@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ABSOLUTE - OPBR Alliance</title>
 
-  <!-- Open Graph Meta Tags -->
+  <!-- Meta Open Graph & Twitter -->
   <meta property="og:title" content="ABSOLUTE – OPBR Alliance" />
   <meta property="og:description" content="Professional Player" />
   <meta property="og:image" content="https://n.uguu.se/jmmaBcYB.jpg" />
   <meta property="og:url" content="https://aliefkaka.biz.id" />
   <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ABSOLUTE – OPBR Alliance" />
-  <meta name="twitter:description" content="Join sini b4bi ally OPBR GG!" />
+  <meta name="twitter:description" content="Profession Player" />
   <meta name="twitter:image" content="https://tmpfiles.org/dl/2902813/049d42c10d.jpg" />
 
   <link rel="stylesheet" href="style.css" />
@@ -24,9 +21,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <style>
-    html, body {
-      scroll-behavior: smooth;
-    }
+    html, body { scroll-behavior: smooth; }
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -36,22 +31,39 @@
       opacity: 1;
       transform: translateY(0);
     }
+    #popupConfirm {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    #popupConfirm .box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+    }
+    #popupConfirm button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-weight: bold;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
   </style>
 
-  <!-- ✅ Vercel Web Analytics -->
+  <!-- Vercel Scripts -->
   <script>
-    window.va = window.va || function () {
-      (window.va.q = window.va.q || []).push(arguments);
-    };
+    window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-
-  <!-- ✅ Vercel Speed Insights -->
-  <script>
-    window.si = window.si || function () {
-      (window.siq = window.siq || []).push(arguments);
-    };
-  </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 
@@ -77,30 +89,16 @@
   <!-- Tentang Kami -->
   <section id="tentang" class="fade-in">
     <h2>Tentang Kami</h2>
-    <p>
-      ABSOLUTE adalah komunitas game One Piece Bounty Rush (OPBR) yang didirikan pada 9 September 2024. Kami mengutamakan kerja sama tim, kompetisi sehat, dan semangat kekeluargaan. Bergabunglah dalam petualangan seru bersama kami!
-    </p>
+    <p>ABSOLUTE adalah komunitas game One Piece Bounty Rush (OPBR) yang didirikan pada 9 September 2024...</p>
   </section>
 
   <!-- Divisi -->
   <section id="divisi-section" class="fade-in">
     <h2>Divisi Kami</h2>
     <div class="divisi-container">
-      <div class="card">
-        <h3>Divisi 1</h3>
-        <p>Dipimpin oleh: Ayahmu</p>
-        <p>Fokus pada strategi PvP dan pengembangan karakter ofensif.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 2</h3>
-        <p>Dipimpin oleh: Alif</p>
-        <p>Spesialisasi dalam pertahanan, support, dan permainan tim solid.</p>
-      </div>
-      <div class="card">
-        <h3>Divisi 3</h3>
-        <p>Dipimpin oleh: Fanz & Budi</p>
-        <p>Mengutamakan taktik disruptif dan eksperimen build karakter.</p>
-      </div>
+      <div class="card"><h3>Divisi 1</h3><p>Dipimpin oleh: Ayahmu</p></div>
+      <div class="card"><h3>Divisi 2</h3><p>Dipimpin oleh: Alif</p></div>
+      <div class="card"><h3>Divisi 3</h3><p>Dipimpin oleh: Fanz & Budi</p></div>
     </div>
   </section>
 
@@ -110,17 +108,7 @@
     <ul>
       <li><strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
       <li><strong>USAHAKAN BISA IKUT MABAR/SPAR</strong> ✅</li>
-      <li><strong>CN (KALAU SUDAH BISA)</strong> ✅</li>
-      <li><strong>NO CHEAT</strong> ❌</li>
-      <li><strong>WAJIB CHEERS</strong> ✅</li>
-      <li><strong>TIDAK MEMBAHAS POLITIK</strong> ✅</li>
-      <li><strong>NO TOXIC, SARA, 18+</strong> ✅</li>
-      <li><strong>BATAS GANTI AKUN 3X</strong> ✅</li>
-      <li><strong>IZIN GANTI AKUN KE LEADER</strong> ✅</li>
-      <li><strong>NO SPAM STIKER SAAT SERIUS</strong> ✅</li>
-      <li><strong>DILARANG MEMBANTU CHEATER</strong> ✅</li>
-      <li><strong>DILARANG DOUBLE ALLY</strong> 🚫</li>
-      <li><strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
+      <!-- ... -->
     </ul>
     <p><em>Ketentuan ini terakhir diperbarui pada 8 Mei 2025.</em></p>
   </section>
@@ -131,10 +119,8 @@
     <form id="regForm">
       <label for="name">Nama Lengkap:</label>
       <input type="text" id="name" name="name" required />
-
       <label for="whatsapp">Nomor WhatsApp:</label>
       <input type="text" id="whatsapp" name="whatsapp" required />
-
       <label for="divisi-select">Pilih Divisi:</label>
       <select id="divisi-select" name="divisi" required>
         <option value="" disabled selected hidden>Pilih Divisi</option>
@@ -142,17 +128,23 @@
         <option value="Divisi 2">Divisi 2 (Minimal Level 20)</option>
         <option value="Divisi 3">Divisi 3 (Minimal Level 12)</option>
       </select>
-
       <label for="level">Level Akun:</label>
       <input type="text" id="level" name="level" required />
-
       <label for="reason">Mengapa Anda ingin bergabung?</label>
       <textarea id="reason" name="reason" rows="4" required></textarea>
-
       <button type="submit">Daftar Sekarang</button>
     </form>
     <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
   </section>
+
+  <!-- Pop-up Konfirmasi -->
+  <div id="popupConfirm">
+    <div class="box">
+      <h3>Bergabung ke Grup WhatsApp?</h3>
+      <p>Klik tombol di bawah untuk bergabung dengan grup resmi ALLIANCE ABSOLUTE OPBR.</p>
+      <button onclick="redirectToWhatsApp()">Ya, lanjut!</button>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="fade-in">
@@ -195,11 +187,9 @@
         const result = await res.json();
         if (res.ok) {
           document.getElementById("regForm").style.display = "none";
-          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar! Anda akan segera dialihkan ke grup WhatsApp...';
+          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar!';
           document.getElementById("thanksMessage").style.display = "block";
-          setTimeout(() => {
-            window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
-          }, 2000);
+          document.getElementById("popupConfirm").style.display = "flex";
         } else {
           alert("Gagal mendaftar: " + result.message);
         }
@@ -208,6 +198,10 @@
         alert("Terjadi kesalahan saat mengirim data.");
       }
     });
+
+    function redirectToWhatsApp() {
+      window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
+    }
 
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
@@ -218,5 +212,4 @@
     });
   </script>
 </body>
-
 </html>
