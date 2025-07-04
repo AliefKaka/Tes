@@ -1,54 +1,29 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
+<!-- FILE: index.html --><!DOCTYPE html><html lang="id"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ABSOLUTE - OPBR Alliance</title>
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="ABSOLUTE – OPBR Alliance" />
+  <title>ABSOLUTE - OPBR Alliance</title>  <!-- Open Graph Meta Tags -->  <meta property="og:title" content="ABSOLUTE – OPBR Alliance" />
   <meta property="og:description" content="Professional Player" />
   <meta property="og:image" content="https://qu.ax/dsmBF.jpg" />
   <meta property="og:url" content="https://aliefkaka.biz.id" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:type" content="website" />  <!-- Twitter Card -->  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ABSOLUTE – OPBR Alliance" />
   <meta name="twitter:description" content="Professional Player" />
-  <meta name="twitter:image" content="https://qu.ax/dsmBF.jpg" />
-
-  <link rel="stylesheet" href="style.css" />
+  <meta name="twitter:image" content="https://qu.ax/dsmBF.jpg" />  <link rel="stylesheet" href="style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
-  <!-- ✅ Vercel Web Analytics -->
-  <script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />  <!-- Vercel Analytics -->  <script>
     window.va = window.va || function () {
       (window.va.q = window.va.q || []).push(arguments);
     };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
-  <!-- ✅ Vercel Speed Insights -->
-  <script>
+  </script>  <script defer src="/_vercel/insights/script.js"></script>  <script>
     window.si = window.si || function () {
       (window.siq = window.siq || []).push(arguments);
     };
-  </script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
-</head>
-
-<body>
+  </script>  <script defer src="/_vercel/speed-insights/script.js"></script></head><body>
   <!-- Loader -->
   <div class="loader-wrapper">
     <div class="loader"></div>
     <p>Loading ABSOLUTE...</p>
-  </div>
-
-  <!-- Header -->
-  <header id="mainHeader">
+  </div>  <!-- Header -->  <header id="mainHeader">
     <h1><img src="https://cdn-icons-png.flaticon.com/512/4270/4270593.png" alt="Logo" style="height: 30px;"> ABSOLUTE</h1>
     <div class="hamburger">☰</div>
     <nav>
@@ -57,18 +32,12 @@
       <a href="#rules">Rules</a>
       <a href="#daftar">Daftar</a>
     </nav>
-  </header>
-
-  <!-- Tentang Kami -->
-  <section id="tentang" class="fade-in">
+  </header>  <!-- Tentang Kami -->  <section id="tentang" class="fade-in">
     <h2>Tentang Kami</h2>
     <p>
       ABSOLUTE adalah komunitas game One Piece Bounty Rush (OPBR) yang didirikan pada 9 September 2024. Kami mengutamakan kerja sama tim, kompetisi sehat, dan semangat kekeluargaan. Bergabunglah dalam petualangan seru bersama kami!
     </p>
-  </section>
-
-  <!-- Divisi -->
-  <section id="divisi-section" class="fade-in">
+  </section>  <!-- Divisi -->  <section id="divisi-section" class="fade-in">
     <h2>Divisi Kami</h2>
     <div class="divisi-container">
       <div class="card">
@@ -87,10 +56,7 @@
         <p>Mengutamakan taktik disruptif dan eksperimen build karakter.</p>
       </div>
     </div>
-  </section>
-
-  <!-- Rules -->
-  <section id="rules" class="fade-in">
+  </section>  <!-- Rules -->  <section id="rules" class="fade-in">
     <h2>Ketentuan Alliance</h2>
     <ul>
       <li><strong>ATTITUDE LEBIH DIUTAMAKAN</strong> 🔝</li>
@@ -108,45 +74,44 @@
       <li><strong>WAKTU MENCARI AKUN 3 HARI</strong> ‼️</li>
     </ul>
     <p><em>Ketentuan ini terakhir diperbarui pada 8 Mei 2025.</em></p>
-  </section>
-
-  <!-- Formulir Pendaftaran -->
-  <section id="daftar" class="fade-in">
+  </section>  <!-- Formulir Pendaftaran -->  <section id="daftar" class="fade-in">
     <h2>Formulir Pendaftaran</h2>
     <form id="regForm">
       <label for="name">Nama Lengkap:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required /><label for="whatsapp">Nomor WhatsApp:</label>
+  <input type="text" id="whatsapp" name="whatsapp" required />
 
-      <label for="whatsapp">Nomor WhatsApp:</label>
-      <input type="text" id="whatsapp" name="whatsapp" required />
+  <label for="divisi-select">Pilih Divisi:</label>
+  <select id="divisi-select" name="divisi" required>
+    <option value="" disabled selected hidden>Pilih Divisi</option>
+    <option value="Divisi 1">Divisi 1 (Minimal Level 30)</option>
+    <option value="Divisi 2">Divisi 2 (Minimal Level 20)</option>
+    <option value="Divisi 3">Divisi 3 (Minimal Level 12)</option>
+  </select>
 
-      <label for="divisi-select">Pilih Divisi:</label>
-      <select id="divisi-select" name="divisi" required>
-        <option value="" disabled selected hidden>Pilih Divisi</option>
-        <option value="Divisi 1">Divisi 1 (Minimal Level 30)</option>
-        <option value="Divisi 2">Divisi 2 (Minimal Level 20)</option>
-        <option value="Divisi 3">Divisi 3 (Minimal Level 12)</option>
-      </select>
+  <label for="level">Level Akun:</label>
+  <input type="text" id="level" name="level" required />
 
-      <label for="level">Level Akun:</label>
-      <input type="text" id="level" name="level" required />
+  <label for="reason">Mengapa Anda ingin bergabung?</label>
+  <textarea id="reason" name="reason" rows="4" required></textarea>
 
-      <label for="reason">Mengapa Anda ingin bergabung?</label>
-      <textarea id="reason" name="reason" rows="4" required></textarea>
+  <button type="submit">Daftar Sekarang</button>
+</form>
+<p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
 
-      <button type="submit">Daftar Sekarang</button>
-    </form>
-    <p id="thanksMessage" style="display:none; text-align:center; margin-top:20px;">Terima kasih telah mendaftar!</p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="fade-in">
+  </section>  <!-- Success Popup -->  <div class="popup-success" id="popupSuccess">
+    <div class="popup-content">
+      <h3>🎉 Pendaftaran Berhasil!</h3>
+      <p>Terima kasih telah mendaftar di ALLIANCE ABSOLUTE.</p>
+      <p>Silakan klik tombol di bawah untuk bergabung ke grup WhatsApp.</p>
+      <div class="popup-buttons">
+        <button onclick="redirectToWhatsApp()">Lanjut ke WhatsApp</button>
+        <button onclick="closePopup()">Tutup</button>
+      </div>
+    </div>
+  </div>  <!-- Footer -->  <footer class="fade-in">
     <p>&copy; 2025 ABSOLUTE OPBR. All rights reserved.</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
+  </footer>  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
     AOS.init();
     window.addEventListener("load", () => {
       document.querySelector(".loader-wrapper").style.display = "none";
@@ -180,11 +145,7 @@
         const result = await res.json();
         if (res.ok) {
           document.getElementById("regForm").style.display = "none";
-          document.getElementById("thanksMessage").textContent = result.message || 'Terima kasih telah mendaftar! Anda akan segera dialihkan ke grup WhatsApp...';
-          document.getElementById("thanksMessage").style.display = "block";
-          setTimeout(() => {
-            window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
-          }, 2000);
+          document.getElementById("popupSuccess").classList.add("show");
         } else {
           alert("Gagal mendaftar: " + result.message);
         }
@@ -194,6 +155,14 @@
       }
     });
 
+    function redirectToWhatsApp() {
+      window.location.href = "https://chat.whatsapp.com/Be9fCqHquxiA5gWZrJLQtF?mode=r_t";
+    }
+
+    function closePopup() {
+      document.getElementById("popupSuccess").classList.remove("show");
+    }
+
     let lastScrollTop = 0;
     const header = document.getElementById("mainHeader");
     window.addEventListener("scroll", () => {
@@ -201,7 +170,4 @@
       header.style.top = st > lastScrollTop ? "-100px" : "0";
       lastScrollTop = Math.max(0, st);
     });
-  </script>
-</body>
-
-</html>
+  </script></body></html>
