@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+/* Scroll Smooth */
+html, body {
+  scroll-behavior: smooth;
+}
+
 /* Body */
 body {
   background: linear-gradient(to bottom, #0c0f1a, #141927);
