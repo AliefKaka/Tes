@@ -486,3 +486,9 @@ footer {
     font-size: 1rem;
   }
 }
+
+.card:hover {
+  transform: perspective(800px) rotateX(6deg) rotateY(-6deg) scale(1.05);
+  box-shadow: 0 25px 45px rgba(0, 188, 212, 0.4);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
